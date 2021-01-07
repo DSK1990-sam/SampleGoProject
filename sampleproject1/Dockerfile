@@ -1,14 +1,11 @@
 # Start from the latest golang base image
 FROM golang:latest
 
-# Add Maintainer Info
-LABEL maintainer="Vishnu R<vishnurapps@gmail.com"
-
 # Set the Current Working Directory inside the container
-WORKDIR /app
+WORKDIR /test
 
 #to get mod and sum files
-RUN go mod init vishnu
+RUN go mod init sampleproject1
 
 # copying server.go into app which is working directory
 COPY server.go .
@@ -21,7 +18,7 @@ RUN go mod download
 RUN go build -o main .
 
 # Expose port 9091 to the outside world
-EXPOSE 9091
+EXPOSE 8080
 
 # Command to run the executable
 CMD ["./main"]
